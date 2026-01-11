@@ -1,6 +1,6 @@
 from textnode import TextType, TextNode
 
-def main():
+def main() -> None:
 
     node = TextNode("this is a test node", TextType.TEXT)
 
