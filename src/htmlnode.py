@@ -13,7 +13,7 @@ class HTMLNode():
         self.props = props
 
     #used by child classes to convert markdown to html
-    def to_html(self) -> None:
+    def to_html(self) -> str:
         raise NotImplementedError("to_html method not implemented")
 
     #convert the props dict to html
@@ -27,3 +27,19 @@ class HTMLNode():
 
     def __repr__(self):
         return f"HTMLNode({self.tag}, {self.value}, children: {self.children}, {self.props})"
+
+#html object with no children
+class LeafNode(HTMLNode):
+    def __init__(self, tag: str, value: str, props: dict | None = None) -> None:
+        super().__init__(tag, value, None, props)
+    
+    def to_html(self) -> str:
+        if self.value is None:
+            raise ValueError("invalid HTML: no value")
+        if self.tag is None:
+            return self.value
+        return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
+
+    def __repr__(self):
+        return f"HTMLNode({self.tag}, {self.value}, {self.props})"
+
