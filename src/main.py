@@ -1,23 +1,10 @@
 from textnode import TextType, TextNode
-from htmlnode import ParentNode, HTMLNode, LeafNode
+from htmlnode import ParentNode, HTMLNode, LeafNode, textnode_to_html_node
 
 def main() -> None:
 
-    node = TextNode("this is a test node", TextType.TEXT)
-
-    #testing repr
-    print(node)
-    node = ParentNode(
-        "p",
-        [
-            LeafNode("b", "Bold text"),
-            LeafNode(None, "Normal text"),
-            LeafNode("i", "italic text"),
-            LeafNode(None, "Normal text"),
-        ],
-    )
-
-    print(node.to_html())
+    node = textnode_to_html_node(TextNode("test", TextType.TEXT))
+    print(node.tag)
 
 if __name__ == "__main__":
     main()
