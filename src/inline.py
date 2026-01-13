@@ -21,11 +21,11 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
     return new_nodes
 
 #get anchor text and urls
-def extract_markdown_links(text):
-    attributes = re.findall(r"(?<!!)\[(.*?)\]\((.*?)\)", text)
+def extract_markdown_links(text) -> list[tuple]:
+    attributes: list[tuple] = re.findall(r"(?<!!)\[(.*?)\]\((.*?)\)", text)
     return attributes
 
 #get alt text and urls
-def extract_markdown_images(text):
-    attributes = re.findall(r"\[(.*?)\]\((.*?)\)", text)
+def extract_markdown_images(text) -> list[tuple]:
+    attributes: list[tuple] = re.findall(r"\[(.*?)\]\((.*?)\)", text)
     return attributes
