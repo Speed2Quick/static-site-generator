@@ -1,5 +1,5 @@
 import unittest
-from src.inline import split_nodes_delimiter
+from src.inline import split_nodes_delimiter, extract_markdown_links, extract_markdown_images
 from src.textnode import TextType, TextNode
 
 class TestInline(unittest.TestCase):
@@ -71,3 +71,15 @@ class TestInline(unittest.TestCase):
         node = TextNode("This is text with a **bold block word", TextType.TEXT)
         with self.assertRaises(Exception):
             split_nodes_delimiter([node], "**", TextType.TEXT)
+
+    def test_extract_links(self):
+        text = "This is text with a link ![to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
+        attributes = extract_markdown_links(text)
+        self.assertEqual(attributes, [("to youtube", "https://www.youtube.com/@bootdotdev")]
+)
+
+    def test_extract_images(self):
+        text = "This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif) and [obi wan](https://i.imgur.com/fJRm4Vk.jpeg"
+        attributes = extract_markdown_images(text)
+        self.assertEqual(attributes, [("rick roll", "https://i.imgur.com/aKaOqIh.gif")])
+
