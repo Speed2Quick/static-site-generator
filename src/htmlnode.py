@@ -1,4 +1,5 @@
 from src.textnode import TextType
+
 #html object representing blocks and inline
 
 class HTMLNode():
