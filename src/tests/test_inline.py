@@ -190,3 +190,6 @@ class TestInline(unittest.TestCase):
                 TextNode("This is just text", TextType.TEXT),
             ]
         )
+
+if __name__ == "__main__":
+    unittest.main()

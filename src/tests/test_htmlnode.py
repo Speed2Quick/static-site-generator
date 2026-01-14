@@ -101,3 +101,5 @@ class TestHTMLNode(unittest.TestCase):
         with self.assertRaises(AttributeError):
             textnode_to_html_node(TextNode("This is a text node", TextType.DNE))
 
+if __name__ == "__main__":
+    unittest.main()

@@ -81,4 +81,3 @@ def textnode_to_html_node(text_node) -> LeafNode:
             return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
         case _:
             raise AttributeError("Invalid text type: could not parse markdown to leafnode")
-            
