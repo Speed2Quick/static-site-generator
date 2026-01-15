@@ -3,7 +3,7 @@ import re
 
 #functions to split nodes with nested texttypes into into mulitple textnode objects
 
-def text_to_textnodes(text):
+def text_to_textnodes(text) -> list[TextNode]:
     nodes = [TextNode(text, TextType.TEXT)]
     nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
     nodes = split_nodes_delimiter(nodes, "_", TextType.ITALIC)
