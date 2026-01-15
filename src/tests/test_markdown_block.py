@@ -1,4 +1,4 @@
-from src.markdown_block import markdown_to_blocks
+from src.markdown_block import BlockType, markdown_to_blocks, block_to_blocktype
 import unittest
 
 class TestMarkdownBlock(unittest.TestCase):
@@ -44,6 +44,26 @@ This is the same paragraph on a new line
                 "- This is a list\n- with items",
             ],
         )
+
+    def test_block_to_blockype_heading(self):
+        block = "### this is a test"
+        self.assertEqual(block_to_blocktype(block), BlockType.HEADING)
+
+    def test_block_to_blockype_code(self):
+        block = "```\nthis is a \ntest\n```"
+        self.assertEqual(block_to_blocktype(block), BlockType.CODE)
+
+    def test_block_to_blockype_quote(self):
+        block = "> this is a test\n> this is a test\n> this is a test"
+        self.assertEqual(block_to_blocktype(block), BlockType.QUOTE)
+
+    def test_block_to_blockype_ulist(self):
+        block = "- this is a test\n- this is a test\n- this is a test"
+        self.assertEqual(block_to_blocktype(block), BlockType.UNORDERED_LIST)
+
+    def test_block_to_blockype_olist(self):
+        block = "1. this is a test\n2. this is a test\n3. this is a test"
+        self.assertEqual(block_to_blocktype(block), BlockType.ORDERED_LIST)
 
 if __name__ == "__main__":
     unittest.main()
