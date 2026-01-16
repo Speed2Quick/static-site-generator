@@ -1,4 +1,4 @@
-from src.textnode import TextType
+from textnode import TextType
 
 #html object representing blocks and inline
 

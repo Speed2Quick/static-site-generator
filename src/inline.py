@@ -1,4 +1,4 @@
-from src.textnode import TextNode, TextType
+from textnode import TextNode, TextType
 import re
 
 #functions to split nodes with nested texttypes into into mulitple textnode objects
