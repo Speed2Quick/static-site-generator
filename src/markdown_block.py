@@ -26,9 +26,9 @@ def block_to_blocktype(block) -> BlockType:
     elif block.startswith("```\n") and block.endswith("```"):
         return BlockType.CODE
 
-    elif block.startswith("> "):
+    elif block.startswith(">"):
         for line in lines:
-            if not line.startswith("> "):
+            if not line.startswith(">"):
                 return BlockType.PARAGRAPH
         return BlockType.QUOTE
 
@@ -127,7 +127,7 @@ def clean_code(block):
 
 def clean_quote(block):
     lines = block.split("\n")
-    lines: list[str] = [line.lstrip("> ") for line in lines]
+    lines: list[str] = [line.lstrip(">").strip() for line in lines]
     quote: str = "\n".join(lines)
     return quote.replace("\n", " ")
 
