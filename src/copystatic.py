@@ -6,7 +6,7 @@ def clean_public(source: str, destination: str):
     if not os.path.exists(source):
         raise FileNotFoundError("Directory to copy from does not exist")
     if not os.path.exists(destination):
-        raise FileNotFoundError("Directory to copy to does not exist")
+        os.mkdir(destination)
     shutil.rmtree(destination)
     os.mkdir(destination)
 
