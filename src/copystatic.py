@@ -20,8 +20,7 @@ def copy_static(contents: list[str], source: str, destination: str):
         copy_static(contents[1:], source, destination)
     else:
         new_destination: str = os.path.join(destination, contents[0])
-        new_source: str = os.path.join(source, contents[0])
         os.mkdir(new_destination)
         new_contents: list[str] = os.listdir(file_path)
-        copy_static(new_contents, new_source, new_destination)
+        copy_static(new_contents, file_path, new_destination)
         copy_static(contents[1:], source, destination)
